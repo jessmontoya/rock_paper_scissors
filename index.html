@@ -25,53 +25,55 @@ function playRound (playerSelection, computerSelection) {
     
     playerSelection = prompt('Choose rock, paper, or scissors').toLowerCase();
     console.log(`Player chooses ${playerSelection}. Computer chooses ${computerSelection}`);
-    
+
     if (playerSelection === 'rock'){
-        if (computerSelection === 'rock') {
+        switch (computerSelection){
+        case 'rock':
             return 'The round is a tie';
-        }
-
-        else if(computerSelection === 'paper') {
+            break;
+        case 'paper':
+            computerScore ++;  
             return 'Computer wins this round';
-            computerScore +=1;    
-        }
-
-        else {
+            break;
+        case 'scissors':
+            playerScore ++;
             return 'Player wins this round';
-            playerScore +=1;
+            break;
         }
     }
     else if (playerSelection === 'paper') {
-        if (computerSelection === 'paper') {
-            return 'The round is a tie';
-        }
-
-        else if(computerSelection === 'scissors') {
-            return 'Computer wins this round';
-            computerScore +=1;
-        }
-
-        else {
+        switch (computerSelection){
+        case 'rock':
+            playerScore ++;
             return 'Player wins this round';
-            playerScore +=1;
+            break;
+        case 'paper':
+            return 'The round is a tie';
+            break;
+        case 'scissors':
+            computerScore ++; 
+            return 'Computer wins this round';
+            break;
+        }
+    }
+    else if (playerSelection === 'scissors') {
+        switch (computerSelection){
+        case 'rock':
+            computerScore ++;    
+            return 'Computer wins this round';
+            break;
+        case 'paper':
+            playerScore ++;
+            return 'Player wins this round';
+            break;
+        case 'scissors':
+            return 'The round is a tie';
+            break;
         }
     }
     else {
-        if (computerSelection === 'scissors') {
-            return 'The round is a tie';
-        }
-
-        else if(computerSelection === 'rock') {
-            return 'Computer wins this round';
-            computerScore +=1;
-        }
-
-        else {
-            return 'Player wins this round';
-            playerScore +=1;
-        }
+        return 'That is not a valid selection, try again.'
     }
-    return [playerScore,computerScore];    
 }
 
 
@@ -93,9 +95,11 @@ function playGame(){
     for (let i = 0; i < 5; i++){
         computerSelection = computerPlay();
         console.log(playRound(playerSelection,computerSelection));
-        console.log(`Player score: ${playerScore}, computer score: ${computerScore}`);
+        console.log(`Player score: ${playerScore}, computer score: ${computerScore}`);    
     }
     checkScore();
+    playerScore = 0;
+    computerScore = 0;
 }
 
 playGame();
