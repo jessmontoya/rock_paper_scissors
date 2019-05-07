@@ -1,0 +1,14 @@
+html {
+    background-color: blue;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    font-size: 14px;
+}
+
+.btn {
+    min-height: 100px;
+    min-width: 100px;
+    border: none;
+    background-color: grey;
+    border-width: 2px;
+    display: inline-block;
+}
