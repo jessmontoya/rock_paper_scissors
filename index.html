@@ -7,13 +7,13 @@
   </head>
   <body>
     <div class ="container">
-        <div class = "btn">
+        <div class = "btn" id="rock">
             <h1>Rock</h1>
         </div>
-        <div class = "btn">
+        <div class = "btn paper">
             <h1>Paper</h1>
         </div>
-        <div class = "btn">
+        <div class = "btn scissors">
             <h1>Scissors</h1>
         </div>
     </div>
@@ -23,7 +23,7 @@
 
         </div>
         <div class = "playScore">
-            
+
         </div>
     </div>
 
@@ -53,9 +53,15 @@ function computerPlay (){
     }
 }
 
+//document.getElementById("rock").addEventListner("click", playRound("rock",computerSelection));
+document.getElementById("rock").addEventListner("click", myFunction());
+
+function myFunction () {
+    console.log("rock");
+}
 function playRound (playerSelection, computerSelection) {
     
-    playerSelection = prompt('Choose rock, paper, or scissors').toLowerCase();
+    computerSelection = computerPlay();
     console.log(`Player chooses ${playerSelection}. Computer chooses ${computerSelection}`);
 
     if (playerSelection === 'rock'){
@@ -129,8 +135,7 @@ function playGame(){
         console.log(playRound(playerSelection,computerSelection));
         console.log(`Player score: ${playerScore}, computer score: ${computerScore}`);    
     checkScore();
-    playerScore = 0;
-    computerScore = 0;
+
 }
 
 
