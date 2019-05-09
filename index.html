@@ -4,140 +4,28 @@
     <meta charset="UTF-8">
     <title>Rock, Paper, Scissors</title>
   <link rel="stylesheet" href="style.css" type="text/css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   </head>
   <body>
+    <h1>Rock, Paper, Scissors</h1>
+
+    <h2>Choose your weapon</h2>
+
     <div class ="container">
-        <div class = "btn" id="rock">
-            <h1>Rock</h1>
-        </div>
-        <div class = "btn paper">
-            <h1>Paper</h1>
-        </div>
-        <div class = "btn scissors">
-            <h1>Scissors</h1>
-        </div>
+        <i class="far fa-hand-rock" id="rock"></i>
+        <i class="far fa-hand-paper" id="paper"></i>
+        <i class="far fa-hand-scissors" id="scissors"></i>
     </div>
 
-    <div class = "container">
-        <div class = "compScore">
-
-        </div>
-        <div class = "playScore">
-
-        </div>
+    <div id="results">
+        <p id="selection"></p>
+        <p id="round"></p>
+        <p id="compScore"></p>
+        <p id="playScore"></p>
+        <p id="winner"></p>
     </div>
 
   </body>
+
+  <script type="text/javascript" src="game.js"></script>
 </html>
-
-<script> 
-let playerSelection;
-let computerSelection;
-
-let playerScore = 0;
-let computerScore = 0;
-
-function computerPlay (){
-    let randomNum = Math.floor(Math.random()*3);
-
-    switch (randomNum){
-        case 0:
-            return 'rock';
-            break;
-        case 1: 
-            return 'scissors';
-            break;
-        case 2:
-            return 'paper';
-            break;
-    }
-}
-
-//document.getElementById("rock").addEventListner("click", playRound("rock",computerSelection));
-document.getElementById("rock").addEventListner("click", myFunction());
-
-function myFunction () {
-    console.log("rock");
-}
-function playRound (playerSelection, computerSelection) {
-    
-    computerSelection = computerPlay();
-    console.log(`Player chooses ${playerSelection}. Computer chooses ${computerSelection}`);
-
-    if (playerSelection === 'rock'){
-        switch (computerSelection){
-        case 'rock':
-            return 'The round is a tie';
-            break;
-        case 'paper':
-            computerScore ++;  
-            return 'Computer wins this round';
-            break;
-        case 'scissors':
-            playerScore ++;
-            return 'Player wins this round';
-            break;
-        }
-    }
-    else if (playerSelection === 'paper') {
-        switch (computerSelection){
-        case 'rock':
-            playerScore ++;
-            return 'Player wins this round';
-            break;
-        case 'paper':
-            return 'The round is a tie';
-            break;
-        case 'scissors':
-            computerScore ++; 
-            return 'Computer wins this round';
-            break;
-        }
-    }
-    else if (playerSelection === 'scissors') {
-        switch (computerSelection){
-        case 'rock':
-            computerScore ++;    
-            return 'Computer wins this round';
-            break;
-        case 'paper':
-            playerScore ++;
-            return 'Player wins this round';
-            break;
-        case 'scissors':
-            return 'The round is a tie';
-            break;
-        }
-    }
-    else {
-        return 'That is not a valid selection, try again.'
-    }
-}
-
-
-
-function checkScore(){
-    if (computerScore > playerScore) {
-        console.log('Computer wins the game!');
-    }
-    else if (computerScore < playerScore){
-        console.log('Player wins the game!');
-    }
-    else {
-        console.log('The game is a tie');
-    }
-}
-
-function playGame(){
-
-    
-        computerSelection = computerPlay();
-        console.log(playRound(playerSelection,computerSelection));
-        console.log(`Player score: ${playerScore}, computer score: ${computerScore}`);    
-    checkScore();
-
-}
-
-
-
-</script>
